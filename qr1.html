@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapitre I - L'Épreuve du Frigo Maudit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Chapitre I - L'Épreuve du Frigo Maudit</h1>
+  </header>
+
+  <section class="content">
+    <p>Pour entrer dans le frigo magique, il vous faudra payer <strong>5 œufs</strong> !</p>
+    <button onclick="showRiddle()">J'ai payé !</button>
+
+    <div id="riddle" style="display:none;">
+      <p><strong>Énigme :</strong> Quel est l’ingrédient secret qui donne son pouvoir à cette glace ?</p>
+      <input type="text" id="answer" placeholder="Réponse">
+      <button onclick="checkAnswer()">Valider</button>
+      <p id="feedback"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p><em>Si vous résolvez l'énigme, la prophétie continuera... sinon, vous devrez revenir chercher plus d'œufs !</em></p>
+  </footer>
+
+  <script>
+    function showRiddle() {
+      document.getElementById('riddle').style.display = 'block';
+    }
+
+    function checkAnswer() {
+      const answer = document.getElementById('answer').value.toLowerCase();
+      const feedback = document.getElementById('feedback');
+      
+      if (answer === 'miel') {
+        feedback.textContent = 'Correct ! Vous pouvez passer à l\'étape suivante...';
+      } else {
+        feedback.textContent = 'Incorrect ! Essayez encore...';
+      }
+    }
+  </script>
+</body>
+</html>
