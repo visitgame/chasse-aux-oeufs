@@ -1,0 +1,32 @@
+
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(to right, #ffe6f0, #e0f7fa);
+  text-align: center;
+  padding: 40px;
+  color: #333;
+}
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+h1 {
+  color: #ff4081;
+}
+.buttons {
+  margin-top: 20px;
+}
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 15px 25px;
+  background-color: #ffca28;
+  color: #000;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.btn:hover {
+  background-color: #fdd835;
+}
