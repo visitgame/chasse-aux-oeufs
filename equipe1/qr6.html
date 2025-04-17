@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Épreuve 6 – Le MicMac</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(135deg, #fef6e4, #e3f6f5);
+      color: #444;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #ffcb77;
+      padding: 20px;
+      border-bottom: 3px solid #ffa351;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #333;
+      font-size: 26px;
+    }
+
+    .content {
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 600px;
+      background-color: #fff4e6;
+      border: 3px dashed #ffcb77;
+      border-radius: 15px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    button {
+      background-color: #71c9ce;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #62b6b7;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      margin: 10px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #fcd5ce;
+      border-top: 3px solid #ffafcc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Épreuve 6 – Le MicMac</h1>
+  </header>
+
+  <section class="content">
+    <p><strong>Prix d'entrée :</strong> 	1 moyen œuf + 1 gros œuf (en chocolat... évidemment !)</p>
+    <button onclick="showChallenge()">J'ai payé !</button>
+
+    <div id="challenge" style="display: none;">
+      <p><strong>Épreuve :</strong> La légende raconte que le Grand Œuf Sacré repose sur un lit de vêtements.<br>
+      Mais pour le retrouver, il faut résoudre ce rébus :</p>
+      <p><em> l'🥚 est le 💩 2 la 🐔  poto pas tres catholique</em></p>
+
+      <input type="text" id="answer" placeholder="Votre réponse ici">
+      <br>
+      <button onclick="checkAnswer()">Valider</button>
+      <p id="feedback"></p>
+
+      <div id="result" style="display:none;">
+
+        <p><strong>📍 Indice pour la prochaine étape :</strong><br>
+          Direction la porte de la chambre au secret ...</p>
+
+        
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Un rébus qui éclaire les intestins de la vérité. 🍳
+  </footer>
+
+  <script>
+    function showChallenge() {
+      document.getElementById("challenge").style.display = "block";
+    }
+
+    function checkAnswer() {
+      const answer = document.getElementById("answer").value.toLowerCase();
+      const feedback = document.getElementById("feedback");
+      const result = document.getElementById("result");
+
+      if (answer.includes("l'oeuf est le caca de la poule")) {
+        feedback.textContent = "Bonne réponse ! Tu peux avancer dans ta quête.";
+        feedback.style.color = "green";
+        result.style.display = "block";
+      } else {
+        feedback.textContent = "Hmm… Ce n’est pas ça. Réessaie, jeune poussin.";
+        feedback.style.color = "red";
+        result.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>

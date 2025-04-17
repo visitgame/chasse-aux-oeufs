@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epreuve 2 – Tourner en bourique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(135deg, #fef6e4, #e3f6f5);
+      color: #444;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #ffcb77;
+      padding: 20px;
+      border-bottom: 3px solid #ffa351;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .content {
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 600px;
+      background-color: #fff4e6;
+      border: 3px dashed #ffcb77;
+      border-radius: 15px;
+    }
+
+    button {
+      background-color: #71c9ce;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      margin: 10px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #fcd5ce;
+      border-top: 3px solid #ffafcc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Epreuve 2 – Tourner en bourique</h1>
+  </header>
+
+  <section class="content">
+    <p><strong>Prix d'entrée :</strong> 1 moyen œuf + 3 petits</p>
+    <button onclick="document.getElementById('challenge').style.display='block'">J'ai payé !</button>
+
+    <div id="challenge" style="display:none;">
+      <p>Écoute les sons et identifie les 3 animaux pour continuer :</p>
+
+      <button onclick="playSound('lion')">🔊 Bruit 1</button>
+      <button onclick="playSound('loup')">🔊 Bruit 2</button>
+      <button onclick="playSound('dauphin')">🔊 Bruit 3</button>
+
+      <div>
+        <input type="text" placeholder="Animal ?" id="guess">
+        <button onclick="checkAnimal()">Valider</button>
+        <p id="feedback"></p>
+      </div>
+
+      <div id="result" style="display:none;">
+        <p>🐣 Bravo ! Tu as reconnu les 3 animaux !</p>
+        <p><strong>✔ Fragment de prophétie :</strong><br>
+          Viens nous voir avec le code secret pour obtenir ton premier bout de phrase !</p>   
+        <p><strong>Symbole secret :</strong> <code>"faire le bruit du cheval"</code></p>
+        <p><strong>Indice :</strong> Direction : le buffet du salon !</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Les sons de la ferme ne mentent jamais. 🐾
+  </footer>
+
+  <script>
+    const sounds = {
+      lion: "https://www.soundjay.com/animal/lion-roar-01.mp3",
+      chien: "https://www.soundjay.com/animal/dog-bark-01.mp3",
+      grenouille: "https://www.soundjay.com/animal/frog-croak-01.mp3"
+    };
+
+    const correct = new Set(["lion", "loup", "dauphin"]);
+    const found = new Set();
+
+    function playSound(animal) {
+      const audio = new Audio(sounds[animal]);
+      audio.play();
+    }
+
+    function checkAnimal() {
+      const input = document.getElementById("guess").value.toLowerCase().trim();
+      const feedback = document.getElementById("feedback");
+      if (correct.has(input)) {
+        if (!found.has(input)) {
+          found.add(input);
+          feedback.textContent = `${input} trouvé ! (${found.size}/3)`;
+        } else {
+          feedback.textContent = `${input} déjà trouvé !`;
+        }
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = "Ce n’est pas un de nos animaux… Réessaie !";
+        feedback.style.color = "red";
+      }
+
+      if (found.size === 3) {
+        document.getElementById("result").style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
