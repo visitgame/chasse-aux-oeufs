@@ -82,7 +82,8 @@
     <div id="challenge" style="display: none;">
       <p><strong>Épreuve :</strong> La légende raconte que le Grand Œuf Sacré repose sur un lit de vêtements.<br>
       Mais pour le retrouver, il faut résoudre ce rébus :</p>
-      <p><em> l'🥚 est le 💩 2 la 🐔 </em></p>
+      <img src="poule.png" alt="Rébus" style="max-width: 100%; height: auto; border-radius: 10px; margin: 20px 0;">
+
 
       <input type="text" id="answer" placeholder="Votre réponse ici">
       <br>
@@ -117,7 +118,7 @@
       const feedback = document.getElementById("feedback");
       const result = document.getElementById("result");
 
-      if (answer.includes("l'oeuf est le caca de la poule")) {
+      if (answer.includes("L'oeuf est le caca de la poule") || (answer.includes("L'œuf est le caca de la poule")) || (answer.includes("Oeuf est caca de poule")) {
         feedback.textContent = "Bonne réponse ! Tu peux avancer dans ta quête.";
         feedback.style.color = "green";
         result.style.display = "block";
