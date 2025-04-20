@@ -115,7 +115,7 @@
       const feedback = document.getElementById("feedback");
       const result = document.getElementById("result");
 
-      if (answer.includes("l'oeuf est le caca de la poule")) {
+      if (answer.includes("L'oeuf est le caca de la poule") || (answer.includes("L'œuf est le caca de la poule")) || (answer.includes("Oeuf est caca de poule")) {
         feedback.textContent = "Bonne réponse ! Tu peux avancer dans ta quête.";
         feedback.style.color = "green";
         result.style.display = "block";
